@@ -3,11 +3,18 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 
 function App() {
-  const [error, setError] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const onSubmit = async (values: any) => {
-    console.log("Values: ", values);
-    setError("");
+    if (values.user === "Pvodelangel" && values.password === "pvoda080297!"){
+      setIsError(false)
+      setIsSuccess(true)
+      console.log("entre")
+    } else {
+      setIsSuccess(false)
+      setIsError(true)
+    }
   };
 
   const formUser = useFormik({
@@ -18,12 +25,25 @@ function App() {
     onSubmit,
   });
 
+  const ErrorNotification = () => {
+    return (<div className="AlertError" role="alert">
+      Wrong password or username, please try again.
+    </div>)
+  }
+
+  const SuccessNotification = () => {
+    return (<div className="AlertSuccess" role="alert">
+      Successful Entry, Welcome Back!
+    </div>)
+  }
+
   return (
     <div className="Container">
       <div className="InnerContainer">
         <form className="Form" onSubmit={formUser.handleSubmit}>
           <label>Welcome Back</label>
-          <div className="ErrorText">{error}</div>
+          {isError ? ErrorNotification() : null}
+          {isSuccess ? SuccessNotification() : null}
           <div className="InputWrapper">
             <label>User</label>
             <input

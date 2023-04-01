@@ -76,8 +76,28 @@
   margin: 5px 0 20px 0;
 }
 
-.ErrorText{
-  color: #eb5d5d;
-  font-size: 18px;
-  margin: 7px 0;
+
+
+.AlertError{
+  font-size: small;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.AlertSuccess{
+  font-size: small;
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
 }
